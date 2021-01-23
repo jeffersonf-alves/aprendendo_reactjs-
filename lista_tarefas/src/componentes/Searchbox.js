@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const InputText = styled.input`
@@ -10,8 +10,22 @@ const InputText = styled.input`
 `;
 
 function SearchBox(props) {
+
+    const [ texto, setTexto ] = useState('');
+
+    function inputChangeText() {
+        setTexto( e.target.texto );
+    }
+
     return (
-        <InputText type="text" placeholder={props.frasePronta}/>
+        <InputText 
+            type="text" 
+            placeholder={props.frasePadrao ?? 'Use uma frase' }
+            onChange={inputChangeText}
+            value={texto}
+            />
+
+
     );
 }
 
